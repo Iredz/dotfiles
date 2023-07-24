@@ -1,0 +1,29 @@
+window:
+  decorations: full # or none
+  opacity: 0.7
+  startup_mode: Maximized
+  title: Alacritty
+draw_bold_text_with_bright_colors: true
+
+font:
+  normal:
+    family: "CascadiaCode PL"
+    style: Regular
+
+  bold:
+    family: "CascadiaCode PL"
+    style: Bold
+
+  italic:
+    # value specified for the normal font.
+    family: "CascadiaCode PL"
+    style: Italic
+
+  bold_italic:
+    family: "CascadiaCode PL"
+    style: Bold Italic
+
+  size: 8.0
+  #colors:
+import:
+  - ~/.config/alacritty/themes/themes/rose-pine-moon.yaml
