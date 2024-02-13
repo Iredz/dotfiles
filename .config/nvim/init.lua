@@ -1,0 +1,1 @@
+require("redz.config.lazy")
