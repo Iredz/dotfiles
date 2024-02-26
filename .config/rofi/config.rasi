@@ -1,11 +1,11 @@
 configuration {
 /*	modes: "window,drun,run,ssh";*/
-/*	font: "mono 12";*/
+/*	font: "JetBrainsMono NF 12";*/
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
-/*	show-icons: false;*/
+show-icons: true;
 /*	terminal: "xdg-terminal";*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} {ssh-client} {host} [-p {port}]";*/
@@ -147,5 +147,48 @@ configuration {
   filebrowser {
       directories-first: true;
       sorting-method:    "name";
+
   }
 }
+
+* {
+  background: white;
+}
+
+window {
+  location: center;
+  width:40%;
+  padding: 4px;
+  border-radius: 5px;
+  border: 2px;
+  border-color: pink;
+}
+
+
+element {
+   orientation: horizontal;
+   children: [element-icon, element-text];
+   spacing: 5px;
+}
+inputbar {
+    padding:    8px 12px;
+    spacing:    12px;
+    children:   [ prompt, entry ];
+}
+
+prompt, entry, element-text, element-icon {
+    vertical-align: 0.5;
+}
+entry {
+  expand: true;
+  placeholder: "Type here";
+  cursor: pointer;
+}
+
+listview {
+  lines: 10;
+  columns: 1;
+  fixed-height: false;
+}
+
+
