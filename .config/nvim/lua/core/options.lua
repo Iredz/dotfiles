@@ -3,6 +3,7 @@ local opt = vim.opt
 g.mapleader = " "
 g.localmapleader = "\\"
 
+opt.termguicolors = true
 opt.confirm = true
 opt.cursorline = true
 opt.mouse = "a"
