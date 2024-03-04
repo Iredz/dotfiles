@@ -1,0 +1,94 @@
+{
+  "height": 35,
+  "width": 1920,
+  "position": "top",
+  "layer": "top",
+  "spacing": 20,
+  "modules-left": [
+    "sway/workspaces",
+  //  "sway/mode"
+    "sway/window"
+  ],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "tray",
+    "network",
+    //"pulseaudio",
+    "wireplumber",
+    "backlight",
+    "custom/batteryUDEV"
+  ],
+  "sway/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "urgent": "",
+      "active": "",
+      "default": ""
+    }
+  },
+  "sway/mode": {
+    "format": "{}",
+    "max-length": 50
+  },
+  "sway/window": {
+    "format": "{title}",
+    "max-length": 30
+  },
+  "tray": {
+    "icon-size": 25,
+    "spacing": 10
+  },
+  "network": {
+    "interface": "wlp3s0",
+    "format": "{ifname}",
+    "format-wifi": "  {essid} ({signalStrength}%)",
+    "format-disconnected": "",
+    "max-length": 50
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-icons": ["", "", ""],
+    "on-click": "pavucontrol"
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "interval": 4,
+    "format": " {percent}%"
+  },
+  "custom/batteryUDEV": {
+    "format": "{}",
+    "exec": "~/.config/waybar/scripts/battery-combined-udev.sh"
+  },
+  "clock": {
+    "format": "{:%H:%M}  ",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-click-forward": "tz_up",
+        "on-click-backward": "tz_down",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down"
+      }
+    }
+  }
+}
