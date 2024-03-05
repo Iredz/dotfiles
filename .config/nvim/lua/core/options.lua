@@ -1,7 +1,10 @@
 local g = vim.g
 local opt = vim.opt
+
 g.mapleader = " "
 g.localmapleader = "\\"
+g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
 
 opt.termguicolors = true
 opt.confirm = true

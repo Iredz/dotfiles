@@ -7,10 +7,35 @@ return {
     "hrsh7th/cmp-cmdline",
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
-    "onsails/lspkind.nvim",
   },
   config = function()
-    local lspkind = require("lspkind")
+    local kind_icons = {
+      Text = "",
+      Method = "󰆧",
+      Function = "󰊕",
+      Constructor = "",
+      Field = "󰇽",
+      Variable = "󰂡",
+      Class = "󰠱",
+      Interface = "",
+      Module = "",
+      Property = "󰜢",
+      Unit = "",
+      Value = "󰎠",
+      Enum = "",
+      Keyword = "󰌋",
+      Snippet = "",
+      Color = "󰏘",
+      File = "󰈙",
+      Reference = "",
+      Folder = "󰉋",
+      EnumMember = "",
+      Constant = "󰏿",
+      Struct = "",
+      Event = "",
+      Operator = "󰆕",
+      TypeParameter = "󰅲",
+    }
     local cmp = require("cmp")
     cmp.setup({
       snippet = {
@@ -19,10 +44,15 @@ return {
         end,
       },
       window = {
-        --completion = cmp.config.window.bordered(),
-        --documentation = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+          border = "single"
+        }),
+        documentation = cmp.config.window.bordered({
+          border = "single"
+        }),
       },
       mapping = cmp.mapping.preset.insert({
+        ["<C-M>"] = cmp.mapping.open_docs(),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
@@ -31,20 +61,30 @@ return {
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        { name = "luasnip" }, -- For luasnip users.
+        { name = "luasnip" },
       }, {
         { name = "buffer" },
+        { name = "path" },
+        { name = "cmdline",
+            option = { ignore_cmds = {'Man', '!'} }
+          },
       }),
       formatting = {
-        format = lspkind.cmp_format({
-          mode = "symbol",
-          maxwidth = 50,
-          ellipsis_char = "...",
-          show_labelDetails = true,
-          before = function(entry, vim_item)
-            return vim_item
-          end,
-        }),
+        format = function(entry, vim_item)
+          -- Kind icons
+          vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+          vim_item.menu = ({
+            buffer = "[Buffer]",
+            nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
+            nvim_lua = "[Lua]",
+            latex_symbols = "[LaTeX]",
+          })[entry.source.name]
+          return vim_item
+        end,
+      },
+      view = {
+        entries = { name = "custom", selection_order = "near_cursor" },
       },
     })
     cmp.setup.filetype("gitcommit", {

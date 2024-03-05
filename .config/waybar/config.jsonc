@@ -1,25 +1,34 @@
 {
-  "height": 35,
+  "height": 40,
   "width": 1920,
   "position": "top",
   "layer": "top",
   "spacing": 20,
   "modules-left": [
-    "sway/workspaces",
   //  "sway/mode"
-    "sway/window"
+  //  "sway/window"
+      "clock",
+      "sway/window"
   ],
-  "modules-center": ["clock"],
+  "modules-center": ["sway/workspaces"],
   "modules-right": [
     "tray",
     "network",
     //"pulseaudio",
     "wireplumber",
     "backlight",
-    "custom/batteryUDEV"
+    "custom/batteryUDEV",
+    "custom/powermenu"
   ],
   "sway/workspaces": {
     "format": "{icon}",
+    "persistent-workspaces": {
+      "1":[],
+      "2":[],
+      "3":[],
+      "4":[],
+      "5":[]
+    },
     "on-click": "activate",
     "format-icons": {
       "1": "",
@@ -38,7 +47,7 @@
   },
   "sway/window": {
     "format": "{title}",
-    "max-length": 30
+    "max-length": 20
   },
   "tray": {
     "icon-size": 25,
@@ -47,9 +56,11 @@
   "network": {
     "interface": "wlp3s0",
     "format": "{ifname}",
-    "format-wifi": "  {essid} ({signalStrength}%)",
-    "format-disconnected": "",
-    "max-length": 50
+    "format-wifi": "CONNECTED",
+    "format-disconnected": "NOT CONNECTED",
+    "max-length": 50,
+    "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
+    "on-click": "~/bin/rofi-network-manager/rofi-network-manager.sh"
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
@@ -90,5 +101,9 @@
         "on-scroll-down": "shift_down"
       }
     }
+  },
+  "custom/powermenu": {
+    "format" : " POWER",
+    "on-click": "rofi -show power-menu -modi power-menu:$HOME/bin/rofi-power-menu"
   }
 }
