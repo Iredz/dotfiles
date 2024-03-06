@@ -21,7 +21,7 @@
     "custom/powermenu"
   ],
   "sway/workspaces": {
-    "format": "{icon}",
+    "format": "{name}",
     "persistent-workspaces": {
       "1":[],
       "2":[],
