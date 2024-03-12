@@ -3,31 +3,29 @@
   "width": 1920,
   "position": "top",
   "layer": "top",
-  "spacing": 20,
+  "spacing": 10,
   "modules-left": [
-  //  "sway/mode"
-  //  "sway/window"
-      "clock",
-      "sway/window"
+    "sway/workspaces"
   ],
-  "modules-center": ["sway/workspaces"],
   "modules-right": [
+    "custom/dnf",
     "tray",
     "network",
     //"pulseaudio",
     "wireplumber",
     "backlight",
     "custom/batteryUDEV",
-    "custom/powermenu"
+    "clock",
+    "custom/powermenu",
   ],
   "sway/workspaces": {
     "format": "{name}",
     "persistent-workspaces": {
-      "1":[],
-      "2":[],
-      "3":[],
-      "4":[],
-      "5":[]
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
     },
     "on-click": "activate",
     "format-icons": {
@@ -38,43 +36,53 @@
       "5": "",
       "urgent": "",
       "active": "",
-      "default": ""
-    }
+      "default": "",
+    },
   },
   "sway/mode": {
     "format": "{}",
-    "max-length": 50
+    "max-length": 50,
   },
   "sway/window": {
     "format": "{title}",
-    "max-length": 20
+    "max-length": 20,
+  },
+  "custom/dnf": {
+    "format": " {}",
+    "exec": "~/bin/updates-dnf.sh",
+    "interval": 60,
+    "tooltip": false
   },
   "tray": {
     "icon-size": 25,
-    "spacing": 10
+    "spacing": 10,
   },
   "network": {
     "interface": "wlp3s0",
     "format": "{ifname}",
-    "format-wifi": "CONNECTED",
+    "format-wifi": "  CONNECTED",
     "format-disconnected": "NOT CONNECTED",
     "max-length": 50,
     "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
-    "on-click": "~/bin/rofi-network-manager/rofi-network-manager.sh"
+    "on-click": "~/bin/rofi-network-manager/rofi-network-manager.sh",
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
-    "format-icons": ["", "", ""],
-    "on-click": "pavucontrol"
+    "format-icons": [
+      "",
+      "",
+      ""
+    ],
+    "on-click": "pavucontrol",
   },
   "backlight": {
     "device": "intel_backlight",
     "interval": 4,
-    "format": " {percent}%"
+    "format": " {percent}%",
   },
   "custom/batteryUDEV": {
     "format": "{}",
-    "exec": "~/.config/waybar/scripts/battery-combined-udev.sh"
+    "exec": "~/bin/battery-combined-udev.sh",
   },
   "clock": {
     "format": "{:%H:%M}  ",
@@ -91,19 +99,19 @@
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
       },
       "actions": {
         "on-click-right": "mode",
         "on-click-forward": "tz_up",
         "on-click-backward": "tz_down",
         "on-scroll-up": "shift_up",
-        "on-scroll-down": "shift_down"
-      }
-    }
+        "on-scroll-down": "shift_down",
+      },
+    },
   },
   "custom/powermenu": {
-    "format" : " POWER",
-    "on-click": "rofi -show power-menu -modi power-menu:$HOME/bin/rofi-power-menu"
-  }
+    "format": "",
+    "on-click": "rofi -show power-menu -modi power-menu:$HOME/bin/rofi-power-menu",
+  },
 }
