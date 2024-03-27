@@ -34,4 +34,5 @@ return {
       overrides = {},      -- add custom overrides
     },
   },
+  { "catppuccin/nvim",  name = "catppuccin", priority = 1000 },
 }

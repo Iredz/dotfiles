@@ -43,14 +43,7 @@ return {
           require("luasnip").lsp_expand(args.body)
         end,
       },
-      window = {
-        completion = cmp.config.window.bordered({
-          border = "single"
-        }),
-        documentation = cmp.config.window.bordered({
-          border = "single"
-        }),
-      },
+      window = {},
       mapping = cmp.mapping.preset.insert({
         ["<C-M>"] = cmp.mapping.open_docs(),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -65,9 +58,7 @@ return {
       }, {
         { name = "buffer" },
         { name = "path" },
-        { name = "cmdline",
-            option = { ignore_cmds = {'Man', '!'} }
-          },
+        { name = "cmdline", option = { ignore_cmds = { "Man", "!" } } },
       }),
       formatting = {
         format = function(entry, vim_item)
@@ -84,7 +75,7 @@ return {
         end,
       },
       view = {
-        entries = { name = "custom", selection_order = "near_cursor" },
+--        entries = { name = "custom", selection_order = "near_cursor" },
       },
     })
     cmp.setup.filetype("gitcommit", {
@@ -112,3 +103,4 @@ return {
     })
   end,
 }
+
